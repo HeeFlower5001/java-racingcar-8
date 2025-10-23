@@ -1,8 +1,8 @@
 # java-racingcar-precourse
 ## To do list
-- [ ] 프로그램에 필요한 도메인 작성
+- [x] 프로그램에 필요한 도메인 작성
     - [x] Car
-    - [ ] Track
+    - [x] Track
       - Car 리스트 관리 및 라운드 진행
 
 - [ ] View 작성
