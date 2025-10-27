@@ -1,17 +1,21 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class Car {
     private static final int NAME_REQUIREMENT = 5;
     private static final int MOVE_REQUIREMENT = 4;
 
     private final String name;
     private int position = 0;
+    private final NumberGenerator numberGenerator;
 
     public Car(String name) {
+        this(name, new NumberGeneratorImpl());
+    }
+
+    public Car(String name, NumberGenerator numberGenerator) {
         validateName(name);
         this.name = name;
+        this.numberGenerator = numberGenerator;
     }
 
     private void validateName(String name) {
@@ -37,7 +41,7 @@ public class Car {
     }
 
     public void move() {
-        int randomValue = Randoms.pickNumberInRange(0, 9);
+        int randomValue = numberGenerator.generate();
 
         if (randomValue >= MOVE_REQUIREMENT) {
             position++;
