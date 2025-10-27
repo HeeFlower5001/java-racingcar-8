@@ -10,8 +10,10 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // 1. 입력 받기
-        final List<String> nameList = InputView.inputCarNames();
-        final int totalRound = InputView.inputTotalRound();
+        InputView inputView = new InputView();
+
+        final List<String> nameList = inputView.inputCarNames();
+        final int totalRound = inputView.inputTotalRound();
 
         // 2. Car, Track 생성
         List<Car> carList = nameList.stream()

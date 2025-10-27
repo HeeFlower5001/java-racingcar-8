@@ -1,19 +1,23 @@
 package racingcar.view;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class InputView {
-    private InputView() {
+    private final Input input;
 
+    public InputView() {
+        this(new InputImpl());
     }
 
-    private static String[] parseStringToNames(String input) {
+    public InputView(Input input) {
+        this.input = input;
+    }
+
+    static String[] parseStringToNames(String input) {
         return input.split(",");
     }
 
-    private static int validateRound(String input) {
+    static int validateRound(String input) {
         int totalRound;
 
         try {
@@ -31,20 +35,20 @@ public class InputView {
         return totalRound;
     }
 
-    public static List<String> inputCarNames() {
+    public List<String> inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
+        String names = input.readLine();
 
-        List<String> names = List.of(parseStringToNames(input));
+        List<String> nameList = List.of(parseStringToNames(names));
 
-        return names;
+        return nameList;
     }
 
-    public static int inputTotalRound() {
+    public int inputTotalRound() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        String input = Console.readLine();
+        String number = input.readLine();
 
-        int round = validateRound(input);
+        int round = validateRound(number);
 
         return round;
     }
